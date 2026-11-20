@@ -1,0 +1,611 @@
+[
+  {
+    "rule_id": "DPDP-001",
+    "clause_id": "DPDP-001",
+    "rule_name": "Invalid or Missing Consent Before Processing",
+    "dpdp_section": "Section 6(1)",
+    "description": "A processing event relied on consent that was not active or had expired before the event.",
+    "severity": "HIGH",
+    "risk_weight": 0.9,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "regulation_agent",
+    "primary_table": "transaction_events",
+    "join_tables": [
+      "consent_records"
+    ],
+    "join_key": "consent_id",
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "consent_status",
+        "operator": "in",
+        "value": [
+          "expired",
+          "revoked",
+          "withdrawn"
+        ],
+        "weight": 0.5,
+        "description": "Consent was not active at the time of processing"
+      },
+      {
+        "signal_id": "S2",
+        "field": "expiry_date",
+        "operator": "less_than",
+        "value": "event_date",
+        "weight": 0.5,
+        "description": "Consent expired before the processing event date"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-002",
+    "clause_id": "DPDP-002",
+    "rule_name": "Processing Beyond Stated Purpose",
+    "dpdp_section": "Section 5",
+    "description": "Personal data used for a purpose beyond what was stated in the notice and consented to.",
+    "severity": "HIGH",
+    "risk_weight": 0.85,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "regulation_agent",
+    "primary_table": "transaction_events",
+    "join_tables": [
+      "consent_records"
+    ],
+    "join_key": "consent_id",
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "consented_purpose",
+        "operator": "not_matches",
+        "value": "processing_purpose",
+        "weight": 1.0,
+        "description": "Processing purpose differs from the consented purpose"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-003",
+    "clause_id": "DPDP-003",
+    "rule_name": "Retention Beyond Allowed Period",
+    "dpdp_section": "Section 8(7)",
+    "description": "Personal data retained after its retention expiry date without a legal hold.",
+    "severity": "HIGH",
+    "risk_weight": 0.8,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "data_lifecycle",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "retention_expiry_date",
+        "operator": "less_than_today",
+        "value": null,
+        "weight": 0.45,
+        "description": "Retention expiry date has passed \u00e2\u20ac\u201d data should have been deleted"
+      },
+      {
+        "signal_id": "S2",
+        "field": "retention_status",
+        "operator": "in",
+        "value": [
+          "expired",
+          "pending_deletion"
+        ],
+        "weight": 0.3,
+        "description": "Retention status indicates data is past its allowed window"
+      },
+      {
+        "signal_id": "S3",
+        "field": "legal_hold_flag",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.25,
+        "description": "No legal hold is in place to justify extended retention"
+      }
+    ],
+    "violation_threshold": 0.55,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.15,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-004",
+    "clause_id": "DPDP-004",
+    "rule_name": "Missing Notice to Data Principal",
+    "dpdp_section": "Section 5",
+    "description": "Data collected or processed without providing a notice to the Data Principal.",
+    "severity": "MEDIUM",
+    "risk_weight": 0.6,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "regulation_agent",
+    "primary_table": "consent_records",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "notice_provided",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.6,
+        "description": "No notice was provided to the Data Principal before data collection"
+      },
+      {
+        "signal_id": "S2",
+        "field": "consent_channel",
+        "operator": "in",
+        "value": [
+          "implicit",
+          "pre_ticked",
+          "inferred"
+        ],
+        "weight": 0.4,
+        "description": "Consent channel indicates no explicit notice was delivered"
+      }
+    ],
+    "violation_threshold": 0.6,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.1,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-005",
+    "clause_id": "DPDP-005",
+    "rule_name": "Children's Data Without Guardian Consent",
+    "dpdp_section": "Section 9(1)",
+    "description": "Personal data of a minor processed without verifiable parental or guardian consent.",
+    "severity": "CRITICAL",
+    "risk_weight": 1.0,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "regulation_agent",
+    "primary_table": "customer_master",
+    "join_tables": [
+      "consent_records"
+    ],
+    "join_key": "customer_id",
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "is_minor",
+        "operator": "equals",
+        "value": true,
+        "weight": 0.4,
+        "description": "Customer is flagged as a minor — heightened obligations apply under Section 9"
+      },
+      {
+        "signal_id": "S2",
+        "field": "guardian_consent_hash",
+        "operator": "is_null",
+        "value": null,
+        "weight": 0.4,
+        "description": "No guardian consent record linked to this minor's account"
+      },
+      {
+        "signal_id": "S3",
+        "field": "consent_status",
+        "operator": "not_in",
+        "value": ["active"],
+        "weight": 0.2,
+        "description": "Consent on file is not in active state even if a record exists"
+      }
+    ],
+    "violation_threshold": 0.7,
+    "risk_threshold": 0.2,
+    "recurrence_bonus": 0.25,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-006",
+    "clause_id": "DPDP-006",
+    "rule_name": "Unauthorised Third-Party Data Sharing",
+    "dpdp_section": "Section 6",
+    "description": "Personal data shared with a third party without specific consent or a valid Data Processing Agreement.",
+    "severity": "HIGH",
+    "risk_weight": 0.9,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "risk_agent",
+    "primary_table": "transaction_events",
+    "join_tables": [
+      "consent_records",
+      "system_inventory"
+    ],
+    "join_key": "consent_id",
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "shared_with_third_party",
+        "operator": "equals",
+        "value": true,
+        "weight": 0.3,
+        "description": "Data was shared with a third party in this event"
+      },
+      {
+        "signal_id": "S2",
+        "field": "consented_purpose",
+        "operator": "not_contains",
+        "value": "third_party_sharing",
+        "weight": 0.35,
+        "description": "Consent scope does not include sharing with third parties"
+      },
+      {
+        "signal_id": "S3",
+        "field": "dpa_signed",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.25,
+        "description": "No signed Data Processing Agreement on file for the receiving processor"
+      },
+      {
+        "signal_id": "S4",
+        "field": "is_cross_border",
+        "operator": "equals",
+        "value": true,
+        "weight": 0.1,
+        "description": "Transfer is cross-border \u00e2\u20ac\u201d additional DPDP Chapter V obligations apply"
+      }
+    ],
+    "violation_threshold": 0.55,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-007",
+    "clause_id": "DPDP-007",
+    "rule_name": "Data Minimisation Violation",
+    "dpdp_section": "Section 4",
+    "description": "PII access is recorded as containing fields not justified as necessary for the stated purpose.",
+    "severity": "MEDIUM",
+    "risk_weight": 0.5,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "regulation_agent",
+    "primary_table": "access_logs",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "pii_fields_justified",
+        "operator": "equals",
+        "value": false,
+        "weight": 1.0,
+        "description": "The tenant records that the PII fields accessed were not necessary for the stated purpose"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.1,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-008",
+    "clause_id": "DPDP-008",
+    "rule_name": "Sensitive Data Stored Without Encryption",
+    "dpdp_section": "Section 8(5)",
+    "description": "A security record shows personal data without encryption or with an evidently weak protection algorithm.",
+    "severity": "CRITICAL",
+    "risk_weight": 0.95,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "risk_agent",
+    "primary_table": "security_events",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "pii_encrypted",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.6,
+        "description": "Personal data is recorded as not encrypted"
+      },
+      {
+        "signal_id": "S2",
+        "field": "encryption_type",
+        "operator": "in",
+        "value": [
+          "none",
+          "md5",
+          "sha1",
+          "des",
+          "rc4"
+        ],
+        "weight": 0.4,
+        "description": "The recorded protection type is absent, obsolete, or not encryption"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-009",
+    "clause_id": "DPDP-009",
+    "rule_name": "Missing Grievance Redressal Mechanism",
+    "dpdp_section": "Section 13",
+    "description": "No readily available grievance redressal mechanism is recorded for Data Principals.",
+    "severity": "LOW",
+    "risk_weight": 0.3,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "governance_config",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "grievance_endpoint_available",
+        "operator": "equals",
+        "value": false,
+        "weight": 1.0,
+        "description": "No grievance endpoint is published or available for Data Principals"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.1,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-010",
+    "clause_id": "DPDP-010",
+    "rule_name": "Failure to Honour Data Erasure Request",
+    "dpdp_section": "Section 12(1)(b)",
+    "description": "An erasure request remains incomplete after the organisation's evidenced service deadline without a legal hold.",
+    "severity": "HIGH",
+    "risk_weight": 0.85,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "dsar_requests",
+    "join_tables": [
+      "data_lifecycle"
+    ],
+    "join_key": "customer_id",
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "sla_breached",
+        "operator": "equals",
+        "value": true,
+        "weight": 0.5,
+        "description": "The organisation's evidenced service deadline was exceeded"
+      },
+      {
+        "signal_id": "S2",
+        "field": "retention_status",
+        "operator": "not_in",
+        "value": [
+          "deleted"
+        ],
+        "weight": 0.5,
+        "description": "Data remains retained"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-011",
+    "clause_id": "DPDP-011",
+    "rule_name": "Excess Data Retention After Purpose Completion",
+    "dpdp_section": "Section 8(7)",
+    "description": "Data retained after its processing purpose has been fulfilled, with no legal hold.",
+    "severity": "MEDIUM",
+    "risk_weight": 0.6,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "data_lifecycle",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "purpose_completed",
+        "operator": "equals",
+        "value": true,
+        "weight": 0.4,
+        "description": "Processing purpose has been marked as completed"
+      },
+      {
+        "signal_id": "S2",
+        "field": "retention_status",
+        "operator": "not_in",
+        "value": [
+          "deleted",
+          "pending_deletion"
+        ],
+        "weight": 0.35,
+        "description": "Data is still in active retention despite purpose being complete"
+      },
+      {
+        "signal_id": "S3",
+        "field": "legal_hold_flag",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.25,
+        "description": "No legal hold justifies continued retention after purpose completion"
+      }
+    ],
+    "violation_threshold": 0.8,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.15,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-012",
+    "clause_id": "DPDP-012",
+    "rule_name": "SDF Audit and Accountability Gap",
+    "dpdp_section": "Section 10",
+    "description": "For a designated Significant Data Fiduciary, audit evidence is overdue or accountability controls are incomplete.",
+    "severity": "MEDIUM",
+    "risk_weight": 0.55,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "governance_config",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "audit_frequency_days",
+        "operator": "greater_than",
+        "value": 365,
+        "weight": 0.5,
+        "description": "Recorded SDF audit cadence exceeds once every twelve months"
+      },
+      {
+        "signal_id": "S2",
+        "field": "dpo_assigned",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.5,
+        "description": "Designated SDF has no DPO assigned"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.15,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-013",
+    "clause_id": "DPDP-013",
+    "rule_name": "Unauthorised Employee Access to PII",
+    "dpdp_section": "Section 8(5)",
+    "description": "PII was accessed without an explicit authorization decision recorded by the tenant's access-control process.",
+    "severity": "HIGH",
+    "risk_weight": 0.9,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "audit_agent",
+    "primary_table": "access_logs",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "access_authorized",
+        "operator": "equals",
+        "value": false,
+        "weight": 1.0,
+        "description": "Tenant access-control evidence records the PII access as unauthorised"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-014",
+    "clause_id": "DPDP-014",
+    "rule_name": "Delayed Breach Notification",
+    "dpdp_section": "Section 8(6)",
+    "description": "Detailed personal-data-breach information was furnished to the Board more than 72 hours after awareness of the breach.",
+    "severity": "CRITICAL",
+    "risk_weight": 0.95,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "risk_agent",
+    "primary_table": "security_events",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "notification_delay_hours",
+        "operator": "greater_than",
+        "value": 72,
+        "weight": 1.0,
+        "description": "Detailed notification to the Board exceeded the 72-hour limit under DPDP Rules 2025 Rule 7"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.25,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-015",
+    "clause_id": "DPDP-015",
+    "rule_name": "Cross-Border Transfer Restriction Assessment",
+    "dpdp_section": "Section 16",
+    "description": "Cross-border transfer lacks evidence that applicable Central Government restrictions under Section 16 were assessed and followed.",
+    "severity": "HIGH",
+    "risk_weight": 0.85,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "risk_agent",
+    "primary_table": "transaction_events",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "transfer_restriction_compliant",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.75,
+        "description": "The organisation's recorded Section 16 assessment says the transfer does not comply with an applicable restriction"
+      },
+      {
+        "signal_id": "S2",
+        "field": "transfer_assessment_reference",
+        "operator": "is_null",
+        "value": null,
+        "weight": 0.25,
+        "description": "No evidence reference is supplied for the Section 16 restriction assessment"
+      }
+    ],
+    "violation_threshold": 0.7,
+    "risk_threshold": 0.2,
+    "recurrence_bonus": 0.2,
+    "enabled": true
+  },
+  {
+    "rule_id": "DPDP-016",
+    "clause_id": "DPDP-016",
+    "rule_name": "Processor Accountability Failure",
+    "dpdp_section": "Section 8(2)",
+    "description": "An external processor handling personal data lacks a current recorded contract under Section 8(2).",
+    "severity": "HIGH",
+    "risk_weight": 0.85,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "risk_agent",
+    "primary_table": "system_inventory",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "dpa_signed",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.5,
+        "description": "No current processor contract is recorded"
+      },
+      {
+        "signal_id": "S2",
+        "field": "dpa_expiry_date",
+        "operator": "less_than_today",
+        "value": null,
+        "weight": 0.5,
+        "description": "The recorded processor contract has expired"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.25,
+    "recurrence_bonus": 0.15,
+    "enabled": true
+  }
+]

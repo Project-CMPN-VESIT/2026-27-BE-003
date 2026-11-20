@@ -1,0 +1,113 @@
+[
+  {
+    "rule_id": "POLICY-001",
+    "clause_id": "POLICY-001",
+    "rule_name": "Retention Policy Compliance",
+    "dpdp_section": "Internal control aligned with Section 8(7)",
+    "description": "Internal readiness check that validates whether the tenant maintains an active retention policy. It does not impose a universal statutory retention duration.",
+    "severity": "MEDIUM",
+    "risk_weight": 0.55,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "policy_agent",
+    "primary_table": "policies",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "is_active",
+        "operator": "equals",
+        "value": false,
+        "weight": 1.0,
+        "description": "The tenant's retention policy is inactive"
+      }
+    ],
+    "violation_threshold": 1.0,
+    "risk_threshold": 0.5,
+    "recurrence_bonus": 0.1,
+    "enabled": true
+  },
+  {
+    "rule_id": "POLICY-002",
+    "clause_id": "POLICY-002",
+    "rule_name": "Encryption Policy Compliance",
+    "dpdp_section": "Internal control aligned with Section 8(5)",
+    "description": "Internal readiness check for an active encryption policy and the policy's declared algorithm. This is reported separately from statutory DPDP findings.",
+    "severity": "HIGH",
+    "risk_weight": 0.8,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "policy_agent",
+    "primary_table": "policies",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "is_active",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.4,
+        "description": "Encryption policy is inactive \u2014 personal data may be stored or transmitted without encryption"
+      },
+      {
+        "signal_id": "S2",
+        "field": "policy_value_text",
+        "operator": "in",
+        "value": [
+          "none",
+          "md5",
+          "sha1",
+          "des",
+          "rc4"
+        ],
+        "weight": 0.6,
+        "description": "The internal encryption policy declares a weak or non-encryption algorithm"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.15,
+    "enabled": true
+  },
+  {
+    "rule_id": "POLICY-003",
+    "clause_id": "POLICY-003",
+    "rule_name": "Consent Mechanism Policy",
+    "dpdp_section": "Internal control aligned with Section 6",
+    "description": "Internal readiness check for an active consent mechanism policy and a clear affirmative consent channel. This is reported separately from statutory DPDP findings.",
+    "severity": "HIGH",
+    "risk_weight": 0.75,
+    "check_type": "weighted_evidence",
+    "assigned_agent": "policy_agent",
+    "primary_table": "policies",
+    "join_tables": [],
+    "join_key": null,
+    "evidence_signals": [
+      {
+        "signal_id": "S1",
+        "field": "is_active",
+        "operator": "equals",
+        "value": false,
+        "weight": 0.4,
+        "description": "Consent mechanism policy is inactive \u2014 no governing policy controls how consent is collected"
+      },
+      {
+        "signal_id": "S2",
+        "field": "policy_value_text",
+        "operator": "in",
+        "value": [
+          "implicit",
+          "pre_ticked",
+          "inferred",
+          "bundled"
+        ],
+        "weight": 0.6,
+        "description": "The internal policy permits a channel that does not demonstrate clear affirmative consent"
+      }
+    ],
+    "violation_threshold": 0.5,
+    "risk_threshold": 0.3,
+    "recurrence_bonus": 0.1,
+    "enabled": true
+  }
+]

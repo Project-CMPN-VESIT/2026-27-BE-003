@@ -1,0 +1,16 @@
+security_id,customer_id,tenant_id,pii_encrypted,encryption_type,breach_detected,breach_confirmed_at,notification_delay_hours,affected_user_count,data_categories_breached,security_audit_flag,additional_attributes
+SEC-GEN-003-16a54e1244b6,CUST-GEN-003-24a02fcd0171,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-7d8e2b873839,CUST-GEN-003-e693c28af5bb,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-39696fde8930,CUST-GEN-003-ed5765b9434a,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-705579b5c90f,CUST-GEN-003-ed8323da68cc,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-bdd814cd2fd8,CUST-GEN-003-a391975c9d44,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-656cd50e9578,CUST-GEN-003-7421ccde4282,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-b098b69c7558,CUST-GEN-003-a391975c9d44,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-f403c7967174,CUST-GEN-003-a48ef7d98e60,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-387114bc205a,CUST-GEN-003-7421ccde4282,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-a427e4715c84,CUST-GEN-003-13024492df2a,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-d03cf15c002b,CUST-GEN-003-13024492df2a,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-ff81a4d87d70,CUST-GEN-003-7421ccde4282,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-171b814db4e8,CUST-GEN-003-88f431304b93,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-042af8f9fe3c,CUST-GEN-003-141c22ffd231,GEN-003,False,none,False,,,,,False,{}
+SEC-GEN-003-a68626e5f102,CUST-GEN-003-5b32b9e35ba9,GEN-003,False,none,False,,,,,False,{}

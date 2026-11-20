@@ -1,0 +1,6 @@
+policy_id,tenant_id,policy_type,policy_name,policy_value_numeric,policy_value_unit,effective_date,last_updated,is_active,additional_attributes
+POL-GEN-311-93468fc97cd6,GEN-311,retention,Data Retention Policy,365,days,2025-07-17,2025-07-17,True,{}
+POL-GEN-311-cd1fe315448f,GEN-311,retention,Data Retention Policy,365,days,2026-04-04,2026-04-04,True,{}
+POL-GEN-311-4336d2a8a589,GEN-311,retention,Data Retention Policy,365,days,2024-09-17,2024-09-17,True,{}
+POL-GEN-311-9e16643cdab7,GEN-311,retention,Data Retention Policy,365,days,2024-11-27,2024-11-27,True,{}
+POL-GEN-311-0898ea29b8ed,GEN-311,retention,Data Retention Policy,365,days,2026-04-13,2026-04-13,True,{}

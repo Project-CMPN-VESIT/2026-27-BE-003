@@ -1,0 +1,13 @@
+system_id,tenant_id,system_name,system_type,data_types_stored,pii_stored,encryption_enabled,access_control_enabled,retention_policy_applied,third_party_integrations,data_processor_type,dpa_signed,dpa_expiry_date,additional_attributes
+SYS-GEN-063-e91992f89b0d,GEN-063,Core Banking System,crm,payment_records,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-be4c2d64c340,GEN-063,CRM Platform,core_banking,payment_records,True,True,True,True,yes,internal,True,,{}
+SYS-GEN-063-682cb721d9f8,GEN-063,Analytics Engine,analytics,credit_scores,True,True,True,True,yes,internal,True,,{}
+SYS-GEN-063-312f0d91b4c2,GEN-063,KYC Platform,kyc_platform,credit_scores,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-ffc4bbb5664a,GEN-063,Payment Gateway,payment_gateway,credit_scores,True,True,True,True,yes,internal,True,,{}
+SYS-GEN-063-a4400e28cb81,GEN-063,Data Warehouse,data_warehouse,customer_data,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-81a40b796711,GEN-063,Fraud Detection System,crm,credit_scores,True,True,True,True,yes,internal,True,,{}
+SYS-GEN-063-72c61bd94a9e,GEN-063,Loan Origination System,core_banking,transaction_data,True,True,True,True,yes,internal,True,,{}
+SYS-GEN-063-2c3df3bf8677,GEN-063,Customer Portal,analytics,customer_data,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-110d5f59a0b4,GEN-063,Reporting Engine,kyc_platform,customer_data,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-b5abb5a59f0f,GEN-063,Mobile Banking,payment_gateway,kyc_documents,True,True,True,True,no,internal,True,,{}
+SYS-GEN-063-dee64e92d4aa,GEN-063,Transaction Monitor,data_warehouse,payment_records,True,True,True,True,no,internal,True,,{}

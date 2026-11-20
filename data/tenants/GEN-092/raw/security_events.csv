@@ -1,0 +1,16 @@
+security_id,customer_id,tenant_id,pii_encrypted,encryption_type,breach_detected,breach_confirmed_at,notification_delay_hours,affected_user_count,data_categories_breached,security_audit_flag,additional_attributes
+SEC-GEN-092-3f9285f85d8a,CUST-GEN-092-2ef2f19296df,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-194ed008fe61,CUST-GEN-092-e7b280c6a12a,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-444709b31f4c,CUST-GEN-092-b626c6b959cf,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-945abdabcc3b,CUST-GEN-092-d557e0a73a04,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-96f75c3c5811,CUST-GEN-092-d1724805a45a,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-167bdfd0926a,CUST-GEN-092-a47c4129b9b4,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-bdc07d75cb52,CUST-GEN-092-574244c4206a,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-00b4828d544d,CUST-GEN-092-c74d1d0b77ef,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-626b5c69f631,CUST-GEN-092-b0fe8119499a,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-4e12bcbfb752,CUST-GEN-092-4565ec0a8fcc,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-19c0ebf8c003,CUST-GEN-092-2168b9caea24,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-cf64dc77c148,CUST-GEN-092-45456f9d4e41,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-58c6d0b623ab,CUST-GEN-092-8a83cdf9d96b,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-ad039e4ee790,CUST-GEN-092-52b7d07c8a98,GEN-092,True,AES-256,False,,,,,False,{}
+SEC-GEN-092-4ba29c4a6104,CUST-GEN-092-9f344059d227,GEN-092,True,AES-256,False,,,,,False,{}

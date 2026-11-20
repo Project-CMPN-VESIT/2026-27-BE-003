@@ -1,0 +1,11 @@
+policy_id,tenant_id,policy_type,policy_name,policy_value_numeric,policy_value_unit,effective_date,last_updated,is_active,additional_attributes
+POL-GEN-004-e61a0fddcf73,GEN-004,encryption,Encryption Standards Policy,365,days,2024-09-04,2024-09-04,True,{}
+POL-GEN-004-d3f9bbf34ccc,GEN-004,access_control,Access Control Policy,365,days,2025-09-17,2025-09-17,True,{}
+POL-GEN-004-23002bbafa5c,GEN-004,encryption,Encryption Standards Policy,365,days,2025-02-12,2025-02-12,True,{}
+POL-GEN-004-d3e18e228f0b,GEN-004,encryption,Encryption Standards Policy,365,days,2025-07-13,2025-07-13,True,{}
+POL-GEN-004-d187522fb8bb,GEN-004,encryption,Encryption Standards Policy,365,days,2024-04-23,2024-04-23,True,{}
+POL-GEN-004-e41383d5a2a4,GEN-004,encryption,Encryption Standards Policy,365,days,2024-09-26,2024-09-26,True,{}
+POL-GEN-004-67094e7866a6,GEN-004,encryption,Encryption Standards Policy,365,days,2024-02-03,2024-02-03,True,{}
+POL-GEN-004-367381df9b9b,GEN-004,consent,Consent Management Policy,365,days,2024-09-24,2024-09-24,True,{}
+POL-GEN-004-8472d3e4ac87,GEN-004,retention,Data Retention Policy,365,days,2026-06-28,2026-06-28,True,{}
+POL-GEN-004-93c44c6449d0,GEN-004,access_control,Access Control Policy,365,days,2024-05-22,2024-05-22,True,{}

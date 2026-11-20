@@ -1,0 +1,40 @@
+{
+  "PAYFLEX-002": {
+    "risk_score": 65.0,
+    "risk_tier": "HIGH",
+    "rules_violated": [
+      "DPDP-001",
+      "DPDP-002",
+      "DPDP-003",
+      "DPDP-004",
+      "DPDP-008",
+      "DPDP-011",
+      "DPDP-014",
+      "DPDP-016"
+    ]
+  },
+  "QUICKLOAN-001": {
+    "risk_score": 65.0,
+    "risk_tier": "HIGH",
+    "rules_violated": [
+      "DPDP-001",
+      "DPDP-002",
+      "DPDP-003",
+      "DPDP-004",
+      "DPDP-009",
+      "DPDP-010",
+      "DPDP-011",
+      "DPDP-014",
+      "DPDP-016"
+    ]
+  },
+  "NEXUSNEOBANK-005": {
+    "risk_score": 45.0,
+    "risk_tier": "MEDIUM",
+    "rules_violated": [
+      "DPDP-001",
+      "DPDP-004",
+      "DPDP-011"
+    ]
+  }
+}

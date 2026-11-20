@@ -1,0 +1,16 @@
+security_id,customer_id,tenant_id,pii_encrypted,encryption_type,breach_detected,breach_confirmed_at,notification_delay_hours,affected_user_count,data_categories_breached,security_audit_flag,additional_attributes
+SEC-GEN-025-ab5507b0ac95,CUST-GEN-025-1b3bde3d9b65,GEN-025,False,none,True,2026-06-29T11:47:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-1f7328e7844f,CUST-GEN-025-4a61b867e013,GEN-025,False,none,True,2024-03-30T00:28:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-24625747b968,CUST-GEN-025-5dbfb07026d1,GEN-025,False,none,True,2026-03-18T08:50:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-71ffd4bff053,CUST-GEN-025-e95ca18ee4b3,GEN-025,False,none,True,2024-04-18T22:54:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-ae744f561344,CUST-GEN-025-a549c2b01b0f,GEN-025,False,none,True,2026-02-10T00:06:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-4963276db75a,CUST-GEN-025-b0d593a43b4a,GEN-025,False,none,True,2025-05-20T14:21:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-0d5b06b861de,CUST-GEN-025-2214f786b97c,GEN-025,False,none,True,2025-06-27T13:42:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-a6cb1ee9ca73,CUST-GEN-025-a7918b3e0850,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-942c3aef9748,CUST-GEN-025-fa0ffa61c590,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-a84917dac35c,CUST-GEN-025-1096cd5eaf89,GEN-025,False,none,True,2025-05-06T22:52:00,240,critical,"kyc_documents,contact_info",False,{}
+SEC-GEN-025-aad7b5ccb281,CUST-GEN-025-501953d1e63f,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-431a4d18290d,CUST-GEN-025-56fed06c67f5,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-6557de24da6d,CUST-GEN-025-1096cd5eaf89,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-029c7df313e0,CUST-GEN-025-0439e7c4d797,GEN-025,False,none,False,,,,,False,{}
+SEC-GEN-025-ce546c287f2a,CUST-GEN-025-cbe0ccc85dc8,GEN-025,False,none,True,2025-03-10T12:51:00,240,critical,"kyc_documents,contact_info",False,{}

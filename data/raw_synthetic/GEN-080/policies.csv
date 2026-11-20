@@ -1,0 +1,11 @@
+policy_id,tenant_id,policy_type,policy_name,policy_value_numeric,policy_value_unit,effective_date,last_updated,is_active,additional_attributes
+POL-GEN-080-cc5ce70f5316,GEN-080,retention,Data Retention Policy,365,days,2025-09-22,2025-09-22,False,{}
+POL-GEN-080-9b5d0eacfc43,GEN-080,retention,Data Retention Policy,365,days,2024-03-07,2024-03-07,False,{}
+POL-GEN-080-cc0b9b5088cc,GEN-080,retention,Data Retention Policy,365,days,2025-12-10,2025-12-10,False,{}
+POL-GEN-080-36863b4f8ae0,GEN-080,retention,Data Retention Policy,365,days,2026-01-23,2026-01-23,False,{}
+POL-GEN-080-ed44e49dabb7,GEN-080,retention,Data Retention Policy,365,days,2025-02-26,2025-02-26,False,{}
+POL-GEN-080-aed46ac31fd3,GEN-080,retention,Data Retention Policy,365,days,2025-07-20,2025-07-20,False,{}
+POL-GEN-080-0c58975a0f36,GEN-080,retention,Data Retention Policy,365,days,2026-05-15,2026-05-15,False,{}
+POL-GEN-080-c67ab1725bcc,GEN-080,retention,Data Retention Policy,365,days,2025-10-14,2025-10-14,False,{}
+POL-GEN-080-3460ab19f42c,GEN-080,retention,Data Retention Policy,365,days,2025-08-18,2025-08-18,False,{}
+POL-GEN-080-733327e2df69,GEN-080,retention,Data Retention Policy,365,days,2024-12-30,2024-12-30,False,{}

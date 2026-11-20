@@ -1,0 +1,11 @@
+policy_id,tenant_id,policy_type,policy_name,policy_value_numeric,policy_value_unit,effective_date,last_updated,is_active,additional_attributes
+POL-GEN-015-f25f3cdb367b,GEN-015,breach_notification,Breach Notification Policy,365,days,2025-01-10,2025-01-10,True,{}
+POL-GEN-015-3ffd221369d7,GEN-015,consent,Consent Management Policy,365,days,2024-06-09,2024-06-09,True,{}
+POL-GEN-015-1cb7b70c322c,GEN-015,breach_notification,Breach Notification Policy,365,days,2026-03-02,2026-03-02,True,{}
+POL-GEN-015-7df01e0a54e8,GEN-015,retention,Data Retention Policy,365,days,2025-03-07,2025-03-07,True,{}
+POL-GEN-015-29368ef6c26a,GEN-015,breach_notification,Breach Notification Policy,365,days,2025-10-08,2025-10-08,True,{}
+POL-GEN-015-058792eeca16,GEN-015,retention,Data Retention Policy,365,days,2024-08-29,2024-08-29,True,{}
+POL-GEN-015-f3d29f417176,GEN-015,breach_notification,Breach Notification Policy,365,days,2024-08-26,2024-08-26,True,{}
+POL-GEN-015-3d9446aac797,GEN-015,retention,Data Retention Policy,365,days,2025-01-19,2025-01-19,True,{}
+POL-GEN-015-b15ad4583064,GEN-015,consent,Consent Management Policy,365,days,2025-11-27,2025-11-27,True,{}
+POL-GEN-015-889e3476d985,GEN-015,consent,Consent Management Policy,365,days,2024-09-19,2024-09-19,True,{}

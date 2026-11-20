@@ -1,0 +1,6 @@
+system_id,tenant_id,system_name,system_type,data_types_stored,pii_stored,encryption_enabled,access_control_enabled,retention_policy_applied,third_party_integrations,data_processor_type,dpa_signed,dpa_expiry_date,additional_attributes
+SYS-GEN-278-fc60ffd4db4f,GEN-278,Core Banking System,crm,credit_scores,True,False,False,False,yes,third_party_processor,False,,{}
+SYS-GEN-278-eaddb6bbda10,GEN-278,CRM Platform,core_banking,transaction_data,True,False,False,False,no,third_party_processor,False,,{}
+SYS-GEN-278-aafd0ae11ec5,GEN-278,Analytics Engine,analytics,credit_scores,True,False,False,False,no,third_party_processor,False,,{}
+SYS-GEN-278-9bb83dc2130f,GEN-278,KYC Platform,kyc_platform,credit_scores,True,False,False,False,yes,third_party_processor,False,,{}
+SYS-GEN-278-bd42b0338e76,GEN-278,Payment Gateway,payment_gateway,transaction_data,True,False,False,False,yes,third_party_processor,False,,{}

@@ -1,0 +1,11 @@
+policy_id,tenant_id,policy_type,policy_name,policy_value_numeric,policy_value_unit,effective_date,last_updated,is_active,additional_attributes
+POL-GEN-010-df2e110ba745,GEN-010,consent,Consent Management Policy,365,days,2024-08-02,2024-08-02,True,{}
+POL-GEN-010-9c931c10b022,GEN-010,consent,Consent Management Policy,365,days,2024-03-14,2024-03-14,False,{}
+POL-GEN-010-8f102eb325ba,GEN-010,retention,Data Retention Policy,365,days,2024-04-01,2024-04-01,False,{}
+POL-GEN-010-2c7f16a2aa25,GEN-010,consent,Consent Management Policy,365,days,2024-03-15,2024-03-15,False,{}
+POL-GEN-010-39f1ab5febc6,GEN-010,consent,Consent Management Policy,365,days,2026-04-13,2026-04-13,True,{}
+POL-GEN-010-242d12484a72,GEN-010,access_control,Access Control Policy,365,days,2025-07-14,2025-07-14,True,{}
+POL-GEN-010-8adfa7ee85a0,GEN-010,encryption,Encryption Standards Policy,365,days,2024-07-02,2024-07-02,False,{}
+POL-GEN-010-a3fbb1c62af2,GEN-010,consent,Consent Management Policy,365,days,2024-05-13,2024-05-13,True,{}
+POL-GEN-010-b13e47401620,GEN-010,retention,Data Retention Policy,365,days,2024-01-14,2024-01-14,False,{}
+POL-GEN-010-9ce7e02c6b46,GEN-010,encryption,Encryption Standards Policy,365,days,2025-02-19,2025-02-19,True,{}
